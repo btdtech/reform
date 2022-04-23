@@ -1,16 +1,14 @@
 {
-	"name": "@bac-dam-1991/reform",
-	"version": "17.0.2",
+	"name": "@btdtech/reform",
+	"version": "1.0.2",
 	"description": "React Form Management library",
 	"main": "dist/index.js",
-	"author": "Bac Trach Dam",
+	"author": "BTD Tech",
 	"license": "MIT",
 	"types": "dist/types/index.d.ts",
 	"scripts": {
 		"prebuild": "rimraf dist",
 		"build": "rollup -c",
-		"prepublish": "npm run build",
-		"publish": "npm publish --access public",
 		"test": "jest"
 	},
 	"files": [
