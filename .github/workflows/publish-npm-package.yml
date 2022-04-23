@@ -1,0 +1,28 @@
+name: publish-npm-package
+on:
+  push:
+    branches: [master]
+jobs:
+  run-unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+      - run: npm ci
+      - run: npm run test
+  build-and-publish:
+    needs: [run-unit-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+          registry-url: 'https://npm.pkg.github.com'
+          scope: "@bac-dam-1991"
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
