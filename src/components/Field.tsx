@@ -8,11 +8,9 @@ import React, {
 } from 'react';
 import { FieldLabel } from './FieldLabel';
 import { useFormContext } from './FormProvider';
-import { FormValues } from './interfaces/FormValues';
-import { FieldValue } from './types/FieldValue';
-import { NamePath } from './types/NamePath';
 import { getNamePathValue } from './util';
 import _ from 'lodash';
+import { FieldValue, FormValues, NamePath } from './types';
 
 export type FieldOrientation =
 	| 'row'
@@ -38,6 +36,12 @@ export const Field = ({
 
 	const val = getNamePathValue(form.values as FormValues, name);
 	const [value, setValue] = useState<FieldValue>(val);
+
+	const setFormValues = (newValue: FieldValue) => {
+		form.values = _.set({ ...form.values }, name, newValue || null);
+	};
+
+	setFormValues(val);
 
 	return (
 		<div
@@ -66,12 +70,12 @@ export const Field = ({
 					value: value || '',
 					checked: !!value,
 					onChange: ({ target }) => {
-						let value: FieldValue = target.value;
+						let newValue: FieldValue = target.value;
 						if (child.props.type === 'checkbox') {
-							value = target.checked;
+							newValue = target.checked;
 						}
-						setValue(value);
-						form.values = _.set({ ...form.values }, name, value);
+						setValue(newValue);
+						setFormValues(newValue);
 					},
 				});
 			})}

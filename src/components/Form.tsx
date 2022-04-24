@@ -1,7 +1,6 @@
 import React, { CSSProperties, FormEventHandler, ReactNode } from 'react';
 import { FormContext } from './FormProvider';
-import { FormInstance } from './interfaces/FormInstance';
-import { FormValues } from './interfaces/FormValues';
+import { FormInstance, FormValues } from './types';
 
 export interface FormProps {
 	children: ReactNode;
@@ -13,6 +12,9 @@ export interface FormProps {
 export const Form = ({ children, form, onSubmit, style }: FormProps) => {
 	const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault();
+		if (form && form.validate && !form.validate(form.values)) {
+			return;
+		}
 		onSubmit(form.values);
 	};
 

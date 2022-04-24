@@ -7,10 +7,9 @@ import React, {
 } from 'react';
 import { FieldLabel } from './FieldLabel';
 import { useFormContext } from './FormProvider';
-import { FormValues } from './interfaces/FormValues';
-import { NamePath } from './types/NamePath';
 import { getNamePathValue } from './util';
 import _ from 'lodash';
+import { FormValues, NamePath } from './types';
 
 export interface FieldGroupProps {
 	children: ReactElement[];

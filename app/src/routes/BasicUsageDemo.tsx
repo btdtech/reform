@@ -12,7 +12,12 @@ import ReactJson from 'react-json-pretty';
 import { Checkable } from '../components/Checkable';
 
 export const BasicUsageDemo = () => {
-	const [form] = useForm();
+	const [form, { errors }] = useForm({
+		validations: {
+			givenName: { minLength: 2, maxLength: 10, required: true },
+			familyName: { minLength: 2, maxLength: 10, required: true },
+		},
+	});
 
 	const [values, setValues] = useState<FormValues>({});
 
@@ -32,10 +37,24 @@ export const BasicUsageDemo = () => {
 							<Field name="givenName">
 								<FieldLabel>Given name</FieldLabel>
 								<input autoFocus />
+								<>
+									{errors && errors.givenName && (
+										<Typography variant="caption" color="error">
+											{errors.givenName.message}
+										</Typography>
+									)}
+								</>
 							</Field>
 							<Field name="familyName">
 								<FieldLabel>Family name</FieldLabel>
 								<input />
+								<>
+									{errors && errors.familyName && (
+										<Typography variant="caption" color="error">
+											{errors.familyName.message}
+										</Typography>
+									)}
+								</>
 							</Field>
 							<Field name={['legals', 'agreed']} orientation="row">
 								<input type="checkbox" />
