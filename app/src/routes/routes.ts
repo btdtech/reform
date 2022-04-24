@@ -1,5 +1,6 @@
-import { BasicUsage } from './BasicUsage';
+import { BasicUsageDemo } from './BasicUsageDemo';
 import { Home } from './Home';
+import { StepperFormDemo } from './StepperFormDemo';
 
 export const routes = [
 	{
@@ -10,6 +11,11 @@ export const routes = [
 	{
 		path: 'basic-usage',
 		label: 'Basic Usage',
-		component: BasicUsage,
+		component: BasicUsageDemo,
+	},
+	{
+		path: 'stepper-form',
+		label: 'Stepper Form',
+		component: StepperFormDemo,
 	},
 ];

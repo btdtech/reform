@@ -1,9 +1,9 @@
 import { Container, Typography } from '@mui/material';
 
-export const BasicUsage = () => {
+export const StepperFormDemo = () => {
 	return (
 		<Container>
-			<Typography variant="h1">Basic usage</Typography>
+			<Typography variant="h1">Stepper Form</Typography>
 		</Container>
 	);
 };
