@@ -10,7 +10,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "16.x"
-      - run: npm ci
+      - run: npm i
       - run: npm run test
   build-and-publish:
     needs: [run-unit-tests]
@@ -22,7 +22,7 @@ jobs:
           node-version: "16.x"
           scope: "@btdtech"
           registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
+      - run: npm i
       - run: npm run build
       - run: npm publish --access public
         env:
