@@ -12,9 +12,6 @@ export interface FormProps {
 export const Form = ({ children, form, onSubmit, style }: FormProps) => {
 	const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault();
-		if (form && form.validate && !form.validate(form.values)) {
-			return;
-		}
 		onSubmit(form.values);
 	};
 

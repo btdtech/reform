@@ -1,11 +1,4 @@
-import {
-	FieldErrorDetails,
-	FieldValue,
-	FormValues,
-	MapToWith,
-	NamePath,
-	ValidationRule,
-} from './types';
+import { FieldValue, FormValues, NamePath } from './types';
 
 export const getNamePathValue = (
 	object: FormValues,
@@ -39,61 +32,4 @@ export const getNamePathValue = (
 	}
 
 	return val || '';
-};
-
-export const validateFields = <T extends FormValues>(
-	formValues: FormValues,
-	validations: MapToWith<T, ValidationRule>
-) => {
-	const errors: { [key: string]: FieldErrorDetails } = {};
-
-	for (const k in formValues) {
-		const currentValue = formValues[k];
-		const currentRule = validations[k];
-
-		if (!currentRule) {
-			continue;
-		}
-
-		if (
-			currentRule.required &&
-			(typeof currentValue === 'undefined' || currentValue === null)
-		) {
-			errors[k] = {
-				path: [k],
-				message: `[${k}] is required.`,
-			};
-		}
-
-		if (typeof currentValue === 'object') {
-			continue;
-		}
-		if (typeof currentValue === 'number') {
-			continue;
-		}
-
-		if (typeof currentValue === 'string') {
-			if (
-				currentRule.minLength &&
-				currentRule.minLength > currentValue.length
-			) {
-				errors[k] = {
-					path: [k],
-					message: `[${k}] cannot be less than ${currentRule.minLength} characters long.`,
-				};
-			}
-
-			if (
-				currentRule.maxLength &&
-				currentRule.maxLength < currentValue.length
-			) {
-				errors[k] = {
-					path: [k],
-					message: `[${k}] cannot be more than ${currentRule.maxLength} characters long.`,
-				};
-			}
-		}
-	}
-
-	return errors;
 };

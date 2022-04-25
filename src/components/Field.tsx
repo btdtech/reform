@@ -37,12 +37,6 @@ export const Field = ({
 	const val = getNamePathValue(form.values as FormValues, name);
 	const [value, setValue] = useState<FieldValue>(val);
 
-	const setFormValues = (newValue: FieldValue) => {
-		form.values = _.set({ ...form.values }, name, newValue || null);
-	};
-
-	setFormValues(val);
-
 	return (
 		<div
 			style={{
@@ -75,7 +69,7 @@ export const Field = ({
 							newValue = target.checked;
 						}
 						setValue(newValue);
-						setFormValues(newValue);
+						form.setFieldValue(name, newValue);
 					},
 				});
 			})}

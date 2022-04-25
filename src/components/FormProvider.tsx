@@ -6,7 +6,7 @@ export interface FormContextProps {
 }
 
 export const FormContext = createContext<FormContextProps>({
-	form: { values: {} },
+	form: { values: {}, setFieldValue: () => {} },
 });
 
 export interface FormProviderProps {

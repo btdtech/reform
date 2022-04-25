@@ -1,6 +1,5 @@
-import { MapToWith } from '../types';
 import { FieldValue } from './Field';
-import { ValidationRule } from './Validation';
+import { NamePath } from './Util';
 
 export interface FormValues {
 	[key: string]: FieldValue | FormValues;
@@ -8,6 +7,5 @@ export interface FormValues {
 
 export interface FormInstance<T extends FormValues = {}> {
 	values: T;
-	validations?: MapToWith<T, ValidationRule>;
-	validate?: (formValues: T) => boolean;
+	setFieldValue: (path: NamePath, newValue: FieldValue) => void;
 }
