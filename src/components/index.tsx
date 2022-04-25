@@ -4,6 +4,5 @@ export * from './FieldLabel';
 export * from './Form';
 export * from './FormProvider';
 export * from './types';
-export * from './interfaces';
 export * from './util';
 export * from './hooks';

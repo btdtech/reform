@@ -1,7 +1,6 @@
 import React, { CSSProperties, FormEventHandler, ReactNode } from 'react';
 import { FormContext } from './FormProvider';
-import { FormInstance } from './interfaces/FormInstance';
-import { FormValues } from './interfaces/FormValues';
+import { FormInstance, FormValues } from './types';
 
 export interface FormProps {
 	children: ReactNode;

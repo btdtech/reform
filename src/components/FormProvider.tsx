@@ -1,12 +1,12 @@
-import React, { createContext, ReactNode, useContext } from 'react';
-import { FormInstance } from './interfaces/FormInstance';
+import { createContext, ReactNode, useContext } from 'react';
+import { FormInstance } from './types';
 
 export interface FormContextProps {
 	form: FormInstance;
 }
 
 export const FormContext = createContext<FormContextProps>({
-	form: { values: {} },
+	form: { values: {}, setFieldValue: () => {} },
 });
 
 export interface FormProviderProps {
