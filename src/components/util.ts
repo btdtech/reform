@@ -1,6 +1,4 @@
-import { FormValues } from './interfaces/FormValues';
-import { FieldValue } from './types/FieldValue';
-import { NamePath } from './types/NamePath';
+import { FieldValue, FormValues, NamePath } from './types';
 
 export const getNamePathValue = (
 	object: FormValues,

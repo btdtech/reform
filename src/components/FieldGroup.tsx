@@ -7,10 +7,9 @@ import React, {
 } from 'react';
 import { FieldLabel } from './FieldLabel';
 import { useFormContext } from './FormProvider';
-import { FormValues } from './interfaces/FormValues';
-import { NamePath } from './types/NamePath';
 import { getNamePathValue } from './util';
 import _ from 'lodash';
+import { FieldValue, FormValues, NamePath } from './types';
 
 export interface FieldGroupProps {
 	children: ReactElement[];
@@ -45,10 +44,10 @@ export const FieldGroup = ({ children, name, multiple }: FieldGroupProps) => {
 							values = fieldValue.includes(value)
 								? fieldValue.filter((v) => v !== value)
 								: [...fieldValue, value];
-							form.values = _.set({ ...form.values }, name, values);
+							form.setFieldValue(name, values);
 						} else {
 							values = [value];
-							form.values = _.set({ ...form.values }, name, value);
+							form.setFieldValue(name, value);
 						}
 						setFieldValue(values);
 					},
