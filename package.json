@@ -1,6 +1,6 @@
 {
 	"name": "@btdtech/reform",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "React Form Management library",
 	"main": "dist/index.js",
 	"author": "BTD Tech",
